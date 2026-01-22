@@ -82,5 +82,28 @@ All APIs were tested using Postman.
 - Add admin dashboard
 - Improve security
 
+## 🏗 System Architecture
+
+Client (Postman / Frontend)
+↓
+Backend API (Node.js + Express)
+↓
+Authentication Middleware (Merchant Validation)
+↓
+Payment Controller
+↓
+PostgreSQL Database
+├── orders table
+└── payments table
+
+
+### Architecture Explanation
+- Client sends payment request to backend API
+- Backend authenticates merchant
+- Controller validates order and payment details
+- Payment and order data stored securely in database
+- Response sent back to client
+
+
 ## 👨‍💻 Author
 MAHABOOB SUBHANI SHAIK
