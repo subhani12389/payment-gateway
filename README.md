@@ -33,7 +33,44 @@ MONGO_URI
 PAYMENT_SECRET  
 
 ## 🔄 API Endpoints
-POST /api/payment/initiate  
+### 1️⃣ Create Payment
+**POST** `/api/v1/payments`
+
+#### Request Body
+```json
+{
+  "order_id": "order_12345",
+  "method": "upi",
+  "vpa": "user@upi"
+}
+
+ Success Response (201)
+ {
+  "id": "pay_xxxxxxxxxxxxxx",
+  "order_id": "order_12345",
+  "amount": 500,
+  "currency": "INR",
+  "method": "upi",
+  "status": "captured",
+  "vpa": "user@upi",
+  "created_at": "2026-01-22T10:30:00.000Z"
+}
+Error Responses
+
+{
+  "error": {
+    "code": "ORDER_NOT_FOUND",
+    "description": "Order not found"
+  }
+}
+
+{
+  "error": {
+    "code": "PAYMENT_ALREADY_DONE",
+    "description": "This order has already been paid"
+  }
+}
+
 POST /api/payment/verify  
 GET  /api/payment/status  
 
